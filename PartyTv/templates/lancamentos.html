@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+        <h1>Ultimos lançamentos</h1>
+        <h3 class="titulo">Novas Resenhas lançadas aqui no site.</h3>
+          <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col">
+                {% for filme in filmes %}
+                    <a href="{{ url_for('exibir_filme', filme_id=filme.id) }}"><img src="{{ url_for('static', filename='CapasFilmes/{}'.format(filme.foto)) }}" class="img-radius mt-2 p-1" alt="User-Profile-Image" width="200"></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

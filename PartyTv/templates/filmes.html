@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <br>
+    <h1 class="titulo">Filmes Disponiveis</h1>
+    <h3>Aqui no Party Tv nós temos varías resenhas de filmes diferentes para você {{ current_user.username }}</h3>
+    <hr>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                {% for filme in filmes %}
+                    <a href="{{ url_for('exibir_filme', filme_id=filme.id) }}"><img src="{{ url_for('static', filename='CapasFilmes/{}'.format(filme.foto)) }}" class="img-radius mt-2 p-1" alt="User-Profile-Image" width="200"></a>
+                {% endfor %}
+                <hr>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

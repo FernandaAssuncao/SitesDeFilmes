@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row border mt-2 p-3 estilofilme">
+            <div class="col col-3">
+                <img src="{{ url_for('static', filename='CapasFilmes/{}'.format(filme.foto)) }}" class="img-radius " alt="User-Profile-Image" width="200">
+                <strong class="titulo">Categoria: {{ filme.categoria }}</strong>
+            </div>
+            <div class="col col-9">
+                {% if filme.nome in current_user.filmes_assistidos %}
+                    <h3 class="titulo">{{ filme.nome }}</h3>
+                {% else %}
+                    <h3 class="titulo">{{ filme.nome }} <a href="{{ url_for('recentes_adicionar', id_filme=filme.id) }}"><button type="button" class="btn btn-outline-danger">Adicionar aos Recentes +</button></a></h3>
+                {% endif %}
+                <p class="cor">{{ filme.sobre }}</p>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

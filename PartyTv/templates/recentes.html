@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <h1 class="titulo">Resenhas Vistas Recentimentes</h1>
+        <h3> Seja bem vinda(o) {{ current_user.username }}</h3>
+        <hr>
+        {% if current_user.filmes_assistidos != 'nenhum filmes assistido' %}
+            {% for filme in filmes %}
+                <div class="row border mt-2 p-3 estilofilme">
+                    <div class="col col-3">
+                        <img src="{{ url_for('static', filename='CapasFilmes/{}'.format(filme.foto)) }}" class="img-radius " alt="User-Profile-Image" width="200">
+                        <strong class="titulo">Categoria: {{ filme.categoria }}</strong>
+                    </div>
+                    <div class="col col-9">
+                        <h3 class="titulo">{{ filme.nome }}</h3>
+                        <p class="cor">{{ filme.sobre }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}
